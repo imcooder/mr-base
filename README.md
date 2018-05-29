@@ -1,5 +1,5 @@
 # mr-base
-split stdio as test ling
+split stdio as test line
 
 [![NPM version][npm-image]][npm-url]
 [![npm download][download-image]][download-url]
@@ -31,8 +31,12 @@ mr.on('end', () => {
     console.log(lineNumber);
 });
 ```
+use:
+```shell
 
+cat test.log | node parse.js
 
+```
 ## Example
 
 
