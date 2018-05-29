@@ -12,26 +12,25 @@ const stdin = process.openStdin();
 const stdout = process.stdout;
 const stderr = process.stderr;
 const EventEmitter = require('events');
-const ee = new EventEmitter();
-stdin.setEncoding('utf8');
-let input = '';
 
 class EE extends EventEmitter {
     constructor() {
+        this.buffer = '';
+        stdin.setEncoding('utf8');
         stdin.on('data', (data) => {
             if (data) {
-                input += data;
-                while (input.match(/\r?\n/)) {
-                    input = RegExp.rightContext;
-                    ee.emit('line', RegExp.leftContext);
+                this.buffer += data;
+                while (this.buffer.match(/\r?\n/)) {
+                    this.buffer = RegExp.rightContext;
+                    this.emit('line', RegExp.leftContext);
                 }
             }
         });
         stdin.on('end', () => {
-            if (input) {
-                ee.emit('line', input);
+            if (this.buffer) {
+                this.emit('line', this.buffer);
             }
-            ee.emit('end');
+            this.emit('end');
         });
     }
     write() {
@@ -91,4 +90,4 @@ class EE extends EventEmitter {
     }
 }
 
-module.exports = ee;
+module.exports = EE;

@@ -23,7 +23,8 @@ npm i mr-base -S
 ```js
 parse.js
 
-const mr = require('mr-base');
+const MRBase = require('mr-base');
+let mr = new MRBase();
 let lineNumber = 0;
 mr.on('line', line => {
     console.log(line);
