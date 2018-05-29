@@ -21,6 +21,8 @@ npm i mr-base -S
 ## Usage
 
 ```js
+parse.js
+
 const mr = require('mr-base');
 let lineNumber = 0;
 mr.on('line', line => {
