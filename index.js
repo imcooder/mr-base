@@ -15,6 +15,7 @@ const EventEmitter = require('events');
 
 class EE extends EventEmitter {
     constructor() {
+        super();
         this.buffer = '';
         stdin.setEncoding('utf8');
         stdin.on('data', (data) => {
