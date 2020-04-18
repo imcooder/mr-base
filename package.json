@@ -1,6 +1,6 @@
 {
-    "name": "mr-base",
-    "version": "1.0.5",
+    "name": "@imcooder/mr-base",
+    "version": "1.0.6",
     "private": false,
     "description": "数据按行分割，pipe out",
     "main": "index.js",
@@ -12,8 +12,11 @@
         "javascript",
         "map reduce"
     ],
-    "dependencies": {
-
+    "scripts": {
+        "pub": "npm publish --access=public --registry=http://registry.npmjs.org",
+        "i": "npm install --registry=http://registry.npmjs.org",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "dependencies": {},
     "devDependencies": {}
 }
