@@ -7,7 +7,7 @@ split stdio as test line
 
 [npm-image]: https://img.shields.io/npm/v/@imcooder/mr-base.svg
 [npm-url]: https://npmjs.com/package/@imcooder/mr-base
-[download-image]: https://img.shields.io/npm/dm@imcooder/mr-base.svg
+[download-image]: https://img.shields.io/npm/dm/@imcooder/mr-base.svg
 [download-url]: https://npmjs.com/package/@imcooder/mr-base
 [david-image]: https://img.shields.io/david/imcooder/mr-base.svg
 [david-url]: https://david-dm.org/imcooder/mr-base
