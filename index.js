@@ -4,7 +4,7 @@
  */
 /* eslint-disable fecs-camelcase */
 /* eslint-disable */
-/* jshint esversion:6 */
+/* jshint esversion:8 */
 /* jshint node:true */
 'use strict';
 
@@ -58,7 +58,7 @@ class EE extends EventEmitter {
     printFormat() {
         let s = util.format.apply(null, arguments);
         stdout.write(s);
-    };
+    }
     writeError() {
         for (let i = 0; i < arguments.length; i++) {
             stderr.write(arguments[i]);
@@ -144,8 +144,7 @@ class EE extends EventEmitter {
         }
         for (let k in o) {
             if (new RegExp('(' + k + ')').test(fmt)) {
-                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1)
-                    ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)));
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)));
             }
         }
         return fmt;
@@ -257,6 +256,12 @@ class EE extends EventEmitter {
         stdin.resume();
     }
 
+    static trimQuery(query, maxQueryLen = 32) {
+        if (query.length < maxQueryLen) {
+            return query;
+        }
+        return query.substring(0, maxQueryLen) + '...';
+    }
 }
 
 module.exports = EE;
