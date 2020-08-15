@@ -81,6 +81,12 @@ class EE extends EventEmitter {
     }
     parseJson(data) {
         let json;
+        if (util.isString(data) && !data) {
+            return json;
+        }
+        if (data === 'null' || data === 'NULL') {
+            return json;
+        }
         try {
             json = JSON.parse(data);
         } catch (e) {
@@ -239,6 +245,26 @@ class EE extends EventEmitter {
         }
         return parseInt(tokens[3], 10);
     }
+
+    static parseTime(str) {
+        let matchs = str.match(/^(\d{4})\-(\d{2})-(\d{2})\ (\d{2}):(\d{2}):(\d{2}).(\d{3})/);
+        if (!matchs) {
+            return;
+        }
+        let date = new Date(matchs[1], matchs[2], matchs[3], matchs[4], matchs[5], matchs[6], matchs[7]);
+        return date.valueOf();
+    }
+    static unbase64(input) {
+        if (!input) {
+            return '';
+        }
+        try {
+            return new Buffer(input, 'base64').toString();
+        } catch (error) {
+            return '';
+        }
+    }
+
     static isTest(cuid) {
         if (cuid.indexOf('monitor') !== -1) {
             return true;

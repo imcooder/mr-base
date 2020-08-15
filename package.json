@@ -1,6 +1,6 @@
 {
     "name": "@imcooder/mr-base",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "private": false,
     "description": "数据按行分割，pipe out",
     "main": "index.js",
