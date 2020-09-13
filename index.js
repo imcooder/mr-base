@@ -324,8 +324,31 @@ class EE extends EventEmitter {
 		if (cuid.indexOf('test') !== -1) {
 			return true;
 		}
-		return false;
-	}
+        return false;
+    }
+
+    static getData(input, path, def = null) {
+        if (!input) {
+            return def;
+        }
+        if (typeof path !== 'string') {
+            return def;
+        }
+        path = path.split('/');
+        let obj = input;
+        while (path.length) {
+            let name = path.shift();
+            if (typeof obj !== 'object') {
+                return def;
+            }
+            if (!obj.hasOwnProperty(name)) {
+                return def;
+            }
+            obj = obj[name];
+        }
+        return obj;
+    }
+
 	pause() {
 		stdin.pause();
 	}
