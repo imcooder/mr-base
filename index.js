@@ -349,6 +349,15 @@ class EE extends EventEmitter {
         return obj;
     }
 
+    static safeParseInt(str, radix, def = 0) {
+        try {
+            let num = parseInt(str, radix);
+            return num;
+        } catch(error) {
+            return def;
+        }
+    }
+
 	pause() {
 		stdin.pause();
 	}
