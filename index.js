@@ -59,6 +59,15 @@ class EE extends EventEmitter {
         let s = util.format.apply(null, arguments);
         stdout.write(s);
     }
+
+    static printFormatToStream(stream, ...args) {
+        if (!stream) {
+            return;
+        }
+        let s = util.format(...args);
+        stream.write(s);
+    }
+
     writeError() {
         for (let i = 0; i < arguments.length; i++) {
             stderr.write(arguments[i]);
